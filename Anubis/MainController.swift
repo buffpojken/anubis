@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 
+
 class MainController: UIViewController, WKScriptMessageHandler, WKNavigationDelegate{
 
     private var webView: WKWebView?
@@ -17,17 +18,20 @@ class MainController: UIViewController, WKScriptMessageHandler, WKNavigationDele
     
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
+        super.init(coder: aDecoder)        
         contentController.add(self, name: "beacons");
-        
     }
     
-    override func viewDidLoad() {
-        
+    override func viewDidLoad() {        
         let config = WKWebViewConfiguration()
         
+        let appFlag = WKUserScript(source: "window.inApp = true", injectionTime: .atDocumentStart, forMainFrameOnly: true)
+        contentController.addUserScript(appFlag)
+
         config.userContentController = contentController
+        config.websiteDataStore = WKWebsiteDataStore.nonPersistent()
+
+        
         self.webView = WKWebView(frame: self.view.bounds, configuration: config)
         
         self.webView?.navigationDelegate = self
@@ -35,17 +39,49 @@ class MainController: UIViewController, WKScriptMessageHandler, WKNavigationDele
         
         self.view.addSubview(self.webView!)
         
-        let request = URLRequest(url: URL(string: "http://localhost:8000/index.html")!)
+        let request = URLRequest(url: URL(string: "http://10.201.93.96:8000/index.html")!)
         self.webView?.load(request)
+        
+        self.beaconManager.beaconDetected = {beacon in
+            self.postEventToContext(event: "beaconDetected", payload: beacon)
+        }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.beaconManager.startObserving();
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.beaconManager.stopObserving();
+    }
+    
     
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         print(error)
     }
     
+    private func postEventToContext(event: String, payload: ObservedBeacon){
+        do{
+            let jsonData = try JSONSerialization.data(withJSONObject: payload.payload, options: JSONSerialization.WritingOptions()) as Data
+            let handler = String(format: "Anubis.receiveMessage('%@', '%@', %@)", payload.identifier, event, String(data: jsonData, encoding:.utf8)!)
+            self.webView?.evaluateJavaScript(handler, completionHandler: nil)
+        }catch _ {
+            print("json error")
+        }
+    }
+    
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("fetto....")
-        print(message.body)
+        if let payload = message.body as? NSDictionary{
+            let tag = payload.object(forKey: "tag") as! String
+            switch(tag){
+            case "registerBeacons":
+                let beacons = payload.object(forKey: "beacons") as? Array<Dictionary<String, Any>>
+                let identifier = payload.object(forKey: "identifier") as! String
+                self.beaconManager.registerBeacons(beacons, forIdentifier: identifier)
+            default:
+                print("nothing")
+            }
+        }
     }
     
 }

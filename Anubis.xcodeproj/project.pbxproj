@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		4E22BB081EC36F4C007DFE36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22BB071EC36F4C007DFE36 /* AppDelegate.swift */; };
-		4E22BB0A1EC36F4C007DFE36 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22BB091EC36F4C007DFE36 /* ViewController.swift */; };
 		4E22BB0D1EC36F4C007DFE36 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E22BB0B1EC36F4C007DFE36 /* Main.storyboard */; };
 		4E22BB0F1EC36F4C007DFE36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E22BB0E1EC36F4C007DFE36 /* Assets.xcassets */; };
 		4E22BB121EC36F4C007DFE36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E22BB101EC36F4C007DFE36 /* LaunchScreen.storyboard */; };
+		4E22BB1C1EC36FD6007DFE36 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22BB1B1EC36FD6007DFE36 /* MainController.swift */; };
+		4E22BB1F1EC37134007DFE36 /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22BB1E1EC37134007DFE36 /* BeaconManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E22BB041EC36F4C007DFE36 /* Anubis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Anubis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E22BB071EC36F4C007DFE36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4E22BB091EC36F4C007DFE36 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4E22BB0C1EC36F4C007DFE36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4E22BB0E1EC36F4C007DFE36 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E22BB111EC36F4C007DFE36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E22BB131EC36F4C007DFE36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E22BB1B1EC36FD6007DFE36 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		4E22BB1E1EC37134007DFE36 /* BeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,47 @@
 		4E22BB061EC36F4C007DFE36 /* Anubis */ = {
 			isa = PBXGroup;
 			children = (
+				4E22BB201EC371CF007DFE36 /* Resources */,
+				4E22BB1D1EC3712C007DFE36 /* Models */,
+				4E22BB1A1EC36FAE007DFE36 /* Views */,
+				4E22BB191EC36FAA007DFE36 /* Controllers */,
 				4E22BB071EC36F4C007DFE36 /* AppDelegate.swift */,
-				4E22BB091EC36F4C007DFE36 /* ViewController.swift */,
 				4E22BB0B1EC36F4C007DFE36 /* Main.storyboard */,
 				4E22BB0E1EC36F4C007DFE36 /* Assets.xcassets */,
 				4E22BB101EC36F4C007DFE36 /* LaunchScreen.storyboard */,
 				4E22BB131EC36F4C007DFE36 /* Info.plist */,
 			);
 			path = Anubis;
+			sourceTree = "<group>";
+		};
+		4E22BB191EC36FAA007DFE36 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4E22BB1B1EC36FD6007DFE36 /* MainController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4E22BB1A1EC36FAE007DFE36 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4E22BB1D1EC3712C007DFE36 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4E22BB1E1EC37134007DFE36 /* BeaconManager.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		4E22BB201EC371CF007DFE36 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +172,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E22BB0A1EC36F4C007DFE36 /* ViewController.swift in Sources */,
+				4E22BB1F1EC37134007DFE36 /* BeaconManager.swift in Sources */,
+				4E22BB1C1EC36FD6007DFE36 /* MainController.swift in Sources */,
 				4E22BB081EC36F4C007DFE36 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

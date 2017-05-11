@@ -39,7 +39,7 @@ class MainController: UIViewController, WKScriptMessageHandler, WKNavigationDele
         
         self.view.addSubview(self.webView!)
         
-        let request = URLRequest(url: URL(string: "http://10.201.93.96:8000/index.html")!)
+        let request = URLRequest(url: URL(string: Config.initialURL)!)
         self.webView?.load(request)
         
         self.beaconManager.beaconDetected = {beacon in
@@ -53,6 +53,21 @@ class MainController: UIViewController, WKScriptMessageHandler, WKNavigationDele
     
     override func viewWillDisappear(_ animated: Bool) {
         self.beaconManager.stopObserving();
+    }
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.navigationType == .linkActivated{
+            if let url = navigationAction.request.url,
+                let host = url.host, !host.hasPrefix(Config.gameHost),
+                UIApplication.shared.canOpenURL(url){
+                UIApplication.shared.openURL(url)
+                decisionHandler(.cancel)
+            }else{
+                decisionHandler(.allow)
+            }
+        }else{
+            decisionHandler(.allow)
+        }
     }
     
     

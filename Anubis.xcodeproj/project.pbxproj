@@ -15,6 +15,7 @@
 		4E22BB1C1EC36FD6007DFE36 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22BB1B1EC36FD6007DFE36 /* MainController.swift */; };
 		4E22BB1F1EC37134007DFE36 /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22BB1E1EC37134007DFE36 /* BeaconManager.swift */; };
 		4E22BB241EC392FB007DFE36 /* MessageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E22BB231EC392FB007DFE36 /* MessageParser.swift */; };
+		4EF6C68A1EC4D5680084123A /* config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6C6891EC4D5680084123A /* config.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4E22BB1B1EC36FD6007DFE36 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		4E22BB1E1EC37134007DFE36 /* BeaconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeaconManager.swift; sourceTree = "<group>"; };
 		4E22BB231EC392FB007DFE36 /* MessageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageParser.swift; sourceTree = "<group>"; };
+		4EF6C6891EC4D5680084123A /* config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = config.swift; sourceTree = "<group>"; };
 		743E0A25EEF6C2F72AE6AD06 /* Pods-Anubis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anubis.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Anubis/Pods-Anubis.debug.xcconfig"; sourceTree = "<group>"; };
 		95527CD37495371B7DED7D5D /* Pods-Anubis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Anubis.release.xcconfig"; path = "Pods/Target Support Files/Pods-Anubis/Pods-Anubis.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 				4E22BB0E1EC36F4C007DFE36 /* Assets.xcassets */,
 				4E22BB101EC36F4C007DFE36 /* LaunchScreen.storyboard */,
 				4E22BB131EC36F4C007DFE36 /* Info.plist */,
+				4EF6C6891EC4D5680084123A /* config.swift */,
 			);
 			path = Anubis;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				4E22BB241EC392FB007DFE36 /* MessageParser.swift in Sources */,
 				4E22BB1F1EC37134007DFE36 /* BeaconManager.swift in Sources */,
 				4E22BB1C1EC36FD6007DFE36 /* MainController.swift in Sources */,
+				4EF6C68A1EC4D5680084123A /* config.swift in Sources */,
 				4E22BB081EC36F4C007DFE36 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
